@@ -67,7 +67,7 @@ Important notes
 File-based session manager is not so slow (see pic)
 Behavior of the FileSessionFactory is the same as SignedCookieSessionFactory. You need to read the standard documentation about using this session factory and request.session itself.
 
-.. figure:: https://cloud.githubusercontent.com/assets/2255508/7739450/a730b1c2-ff69-11e4-96e0-6e6a2ee872c1.png
+.. figure:: https://cloud.githubusercontent.com/assets/2255508/7739538/17af96b0-ff6b-11e4-9723-fa98c0acc9ed.png
 
 Testing
 -------
