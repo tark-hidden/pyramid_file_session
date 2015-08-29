@@ -85,9 +85,15 @@ On Windows machine you need to create directory `tmp` and change Serializer clas
 Changelog
 *********
 
+0.1.1
+~~~~~
+
+More accuracy work with files. `with open` instead of `open`.
+
+
 0.1
 ~~~
 
-Initial release. I think it is a final release also. Python3 version is not tested, but it will work properly, I guess.
+Initial release.
 
 Any help to proving this readme file (and package) would be highly appreciated.
