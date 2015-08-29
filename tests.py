@@ -5,16 +5,18 @@ from pyramid import testing
 from pyramid_file_session import pickle
 
 
-class Serializer(object):
-    directory = '/tmp'
+directory = '/tmp'
 
+
+class Serializer(object):    
     def _serialize(self, value):
         import os
         import hashlib
 
         cookieval = hashlib.md5(os.urandom(32)).hexdigest()
-        fname = os.path.join(self.directory, cookieval)
-        pickle.dump(value, open(fname, 'wb'), pickle.HIGHEST_PROTOCOL)
+        fname = os.path.join(directory, cookieval)
+        with open(fname, 'wb') as f:
+            pickle.dump(value, f, pickle.HIGHEST_PROTOCOL)
         return cookieval
 
 
@@ -282,7 +284,7 @@ class CookieSessionTests(Serializer):
 class IssueSessionTests(CookieSessionTests, unittest.TestCase):
     def _makeOne(self, request, **kw):
         from pyramid_file_session import FileSessionFactory
-        return FileSessionFactory('/tmp', **kw)(request)
+        return FileSessionFactory(directory, **kw)(request)
 
     def test_reissue_not_triggered(self):
         import time
