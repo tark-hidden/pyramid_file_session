@@ -54,7 +54,8 @@ def FileSessionFactory(
                 fname = os.path.join(self._directory, cookieval)
                 if os.path.exists(fname):
                     try:
-                        value = pickle.load(open(fname, 'rb'))
+                        with open(fname, 'rb') as f:
+                            value = pickle.load(f)
                     except ValueError:
                         value = None
 
@@ -172,7 +173,8 @@ def FileSessionFactory(
 
             value = (self.accessed, self.created, dict(self))
             fname = os.path.join(self._directory, cookieval)
-            pickle.dump(value, open(fname, 'wb'), pickle.HIGHEST_PROTOCOL)
+            with open(fname, 'wb') as f:
+                pickle.dump(value, f, pickle.HIGHEST_PROTOCOL)
 
             response.set_cookie(
                 self._cookie_name,
