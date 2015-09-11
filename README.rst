@@ -69,6 +69,12 @@ Behavior of the FileSessionFactory is the same as SignedCookieSessionFactory. Yo
 
 .. figure:: https://cloud.githubusercontent.com/assets/2255508/7739538/17af96b0-ff6b-11e4-9723-fa98c0acc9ed.png
 
+
+And one more thing. Current cookie (!) lifetime is None. That means cookie will be expired after closing browser page.
+It can be real world case, but live session with dead cookie or live cookie with dead session has no value. Don't forget to define
+a ``max_age`` for your cookie!
+
+
 Testing
 -------
 
